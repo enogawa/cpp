@@ -11,11 +11,10 @@ int main(int argc, char const **argv)
 	}
 
 	std::string filename = argv[1];
-
 	std::ifstream in_file(filename);
 	if (!in_file.is_open())
 	{
-		std::cout << "could nou open file" << std::endl;
+		std::cout << "could not open file" << std::endl;
 		return (1);
 	}
 

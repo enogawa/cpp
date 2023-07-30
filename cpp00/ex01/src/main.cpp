@@ -6,10 +6,15 @@ int main(void)
 {
 	std::string	line;
 	PhoneBook	phone;
+	int i = 1;
 
 	while (42)
 	{
-		std::cout << "input command# ";
+		if (i == 1)
+		{
+			std::cout << "input command# ";
+			i = 0;
+		}
 		std::getline(std::cin, line);
 		if (std::cin.eof())
 			exit(0);
@@ -23,5 +28,7 @@ int main(void)
 		}
 		else if (line == "EXIT")
 			exit(0);
+		else
+			std::cout << "input command# ";
 	}
 }

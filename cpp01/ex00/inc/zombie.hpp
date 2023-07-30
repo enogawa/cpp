@@ -5,31 +5,15 @@
 
 
 class Zombie {
-private:
-    std::string name;
-
-public:
-    Zombie(std::string name) {
-        this->name = name;
-    }
-
-    void announce() {
-        std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-    }
-
-    ~Zombie() {
-        std::cout << "Destroying zombie: " << name << std::endl;
-    }
+	private:
+		std::string name;
+	public:
+		Zombie(std::string name);
+		void announce();
+		~Zombie();
 };
 
-Zombie* newZombie(std::string name) {
-    Zombie* zombie = new Zombie(name);
-    return zombie;
-}
-
-void randomChump(std::string name) {
-    Zombie zombie(name);
-    zombie.announce();
-}
+Zombie* newZombie(std::string name);
+void randomChump(std::string name);
 
 #endif
