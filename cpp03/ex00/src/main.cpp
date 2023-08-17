@@ -13,7 +13,7 @@ int main(void)
     claptrap.attack("リュカ");
     claptrap.beRepaired(10);
     claptrap.beRepaired(10);
-    claptrap.takeDamage(11);
+    claptrap.takeDamage(110000);
     claptrap.attack("リュカ");
     claptrap.attack("リュカ");
     claptrap.beRepaired(10);
