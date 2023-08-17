@@ -28,10 +28,10 @@ public:
 	Fixed	operator-(const Fixed &);
 	Fixed	operator*(const Fixed &);
 	Fixed	operator/(const Fixed &);
-	Fixed	operator++(int);
 	Fixed&	operator++(void);
-	Fixed	operator--(int);
+	Fixed	operator++(int);
 	Fixed&	operator--(void);
+	Fixed	operator--(int);
 
 	static Fixed&	min(Fixed &, Fixed &);
 	static const Fixed&	min(const Fixed &, const Fixed &);
@@ -44,5 +44,6 @@ public:
 	int toInt(void) const;
 };
 
+std::ostream &operator<<(std::ostream &, const Fixed &);
 
 #endif
