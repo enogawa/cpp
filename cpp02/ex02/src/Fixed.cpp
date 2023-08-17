@@ -67,22 +67,3 @@ Fixed	Fixed::operator+(const Fixed &cp)
 	return (ans);
 }
 
-float	Fixed::toFloat(void) const
-{
-	return (float)val / (1 << bits);
-}
-
-int	Fixed::toInt(void) const
-{
-	return (int)val / (1 << bits);
-}
-
-int	Fixed::getRawBits(void) const
-{
-	return (this->val);
-}
-
-void	Fixed::setRawBits(int const raw)
-{
-	this->val = raw;
-}
