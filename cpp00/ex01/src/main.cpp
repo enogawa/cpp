@@ -18,7 +18,7 @@ int main(void)
 		std::getline(std::cin, line);
 		if (std::cin.eof())
 			exit(0);
-		else if (line == "ADD")
+		 if (line == "ADD")
 		{
 			phone.add();
 		}

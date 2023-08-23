@@ -10,7 +10,7 @@ Fixed::Fixed(void) : val_(0)
 Fixed::Fixed(int val)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->val_ = val << bits_;
+	this->val_ = val * (1 << bits_);
 }
 
 Fixed::Fixed(float val)

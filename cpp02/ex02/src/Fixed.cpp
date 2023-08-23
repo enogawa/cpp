@@ -6,7 +6,7 @@ Fixed::Fixed(void) : val(0){}
 
 Fixed::Fixed(int num)
 {
-	this->val = num << bits;
+	this->val = num * (1 << bits);
 }
 
 Fixed::Fixed(float num)
