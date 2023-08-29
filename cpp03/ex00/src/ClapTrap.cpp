@@ -17,14 +17,14 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string& target)
 {
-	if (ep_ <= 0)
-	{
-		std::cout << name_ << " does not have any points!" << std::endl;
-		return ;
-	}
-	else if (hp_ <= 0)
+	if (hp_ <= 0)
 	{
 		std::cout << name_ << " has already died" << std::endl;
+		return ;
+	}
+	else if (ep_ <= 0)
+	{
+		std::cout << name_ << " does not have any points!" << std::endl;
 		return ;
 	}
 	ep_--;
