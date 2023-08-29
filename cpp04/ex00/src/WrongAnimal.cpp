@@ -29,7 +29,7 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &cp)
 
 void WrongAnimal::makeSound(void) const
 {
-	std::cout << type_ << " is making some wrong noise" << std::endl;
+	std::cout << "Animal is making some wrong noise" << std::endl;
 }
 
 std::string WrongAnimal::getType(void) const

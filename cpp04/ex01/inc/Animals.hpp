@@ -3,15 +3,15 @@
 
 #include <iostream>
 
-class Animals
+class Animal
 {
 public:
-	Animals();
-	Animals(std::string);
-	Animals(const Animals &);
-	virtual ~Animals();
+	Animal();
+	Animal(std::string);
+	Animal(const Animal &);
+	virtual ~Animal();
 
-	Animals &operator=(const Animals &);
+	Animal &operator=(const Animal &);
 	
 	virtual void makeSound(void) const;
 	std::string getType(void) const;

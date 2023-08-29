@@ -1,3 +1,3 @@
-obj/Animals.o: src/Animals.cpp src/../inc/Animals.hpp
+obj/Animal.o: src/Animal.cpp src/../inc/Animal.hpp
 
-src/../inc/Animals.hpp:
+src/../inc/Animal.hpp:

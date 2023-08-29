@@ -1,4 +1,4 @@
-#include <Animals.hpp>
+#include <Animal.hpp>
 #include <Dog.hpp>
 #include <Cat.hpp>
 #include <Brain.hpp>
@@ -12,20 +12,20 @@ static void destructor(void)
 int main()
 {
 	{
-		const Animals *j = new Dog();
-		const Animals *i = new Cat();
+		const Animal *j = new Dog();
+		const Animal *i = new Cat();
 		delete j; // should not create a leak
 		delete i;
 
 		std::cout << "-----------------------------------------\n";
 		Dog *test = new Dog();
 		test->makeSound();
-		test->Animals::makeSound();
+		test->Animal::makeSound();
 		delete test;
 	}
 	std::cout << "\n-------------------Dog constructor----------------------\n";
 	{
-		Animals *test[4];
+		Animal *test[4];
 		test[0] = new Dog();
 		test[1] = new Dog();
 		std::cout << "\n----------------Cat constructor-------------------------\n";
