@@ -15,6 +15,12 @@ ClapTrap::~ClapTrap()
 	std::cout << "[CT] Destructor called";
 }
 
+ClapTrap &ClapTrap::operator=(const ClapTrap &cp)
+{
+	(void)cp;
+	return *this;
+}
+
 void ClapTrap::attack(const std::string& target)
 {
 	if (hp_ <= 0)
