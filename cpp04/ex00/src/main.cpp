@@ -4,6 +4,12 @@
 #include <WrongAnimal.hpp>
 #include <WrongCat.hpp>
 
+__attribute__((destructor))
+static void destructor(void)
+{
+	system("leaks -q ex00");
+}
+
 int main()
 {
 	std::cout << "--------Normal Animal--------\n" << std::endl;
@@ -20,6 +26,10 @@ int main()
 	meta->makeSound();
 	dog->makeSound();
 	cat->makeSound(); // will output the cat sound!
+	std::cout << "--------destructor--------\n" << std::endl;
+	delete meta;
+	delete dog;
+	delete cat;
 	std::cout << "\n--------Wrong Animal--------\n" << std::endl;
 	const WrongAnimal *meta2 = new WrongAnimal();
 	const WrongAnimal *cat2 = new WrongCat();
@@ -29,5 +39,8 @@ int main()
 	std::cout << "--------sound--------\n" << std::endl;
 	cat2->makeSound(); // will output the cat sound!
 	meta2->makeSound();
+	std::cout << "--------destructor--------\n" << std::endl;
+	delete meta2;
+	delete cat2;
 	return 0;
 }

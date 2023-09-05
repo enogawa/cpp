@@ -3,15 +3,15 @@
 Cat::Cat()
 {
 	type_ = "Cat";
-	std::cout << "Cat: Default constructor called" << std::endl;
 	brain_ = new Brain;
+	std::cout << "Cat: Default constructor called" << std::endl;
 }
 
 Cat::Cat(std::string type)
 {
 	type_ = type;
-	std::cout << "Cat: Default constructor called" << std::endl;
 	brain_ = new Brain;
+	std::cout << "Cat: Default constructor called" << std::endl;
 }
 
 Cat::Cat(const Cat &cp)
@@ -33,7 +33,7 @@ Cat	&Cat::operator=(const Cat &cp)
 	return (*this);
 }
 
-void Cat::makeSound(void) const
+void Cat::makeSound(void)
 {
 	std::cout << "Cat is mewing" << std::endl;
 }

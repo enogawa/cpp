@@ -3,15 +3,15 @@
 Dog::Dog() 
 {
 	type_ = "Dog";
-	std::cout << "Dog: Default constructor called" << std::endl;
 	brain_ = new Brain;
+	std::cout << "Dog: Default constructor called" << std::endl;
 }
 
 Dog::Dog(std::string type)
 {
 	type_ = type;
-	std::cout << "Dog: Default constructor called" << std::endl;
 	brain_ = new Brain;
+	std::cout << "Dog: Default constructor called" << std::endl;
 }
 
 Dog::Dog(const Dog &cp)
@@ -33,7 +33,7 @@ Dog	&Dog::operator=(const Dog &cp)
 	return (*this);
 }
 
-void Dog::makeSound(void) const
+void Dog::makeSound(void)
 {
 	std::cout << "Dog is barking" << std::endl;
 }
