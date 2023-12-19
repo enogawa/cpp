@@ -83,6 +83,3 @@ std::ostream &operator<<(std::ostream &stream, const Form &F)
 
 	return stream;
 }
-
-
-

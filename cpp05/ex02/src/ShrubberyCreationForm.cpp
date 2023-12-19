@@ -7,6 +7,7 @@ const char *ShrubberyCreationForm::asciiTree =
 	"		 *-----*\n"
 	"		*-------*\n"
 	"	   *---------*\n"
+	"		   |||\n"
 	"		   |||\n";
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Surubbery", 145, 137)

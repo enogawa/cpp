@@ -10,7 +10,7 @@ int main(void)
 	try
 	{
 		ShrubberyCreationForm AForm("garden");
-		Bureaucrat bob("Bob", 136);
+		Bureaucrat bob("Bob", 130);
 
 		std::cout << AForm << std::endl;
 		std::cout << bob << std::endl;

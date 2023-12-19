@@ -4,7 +4,7 @@ int main(void)
 {
 	try
 	{
-		Bureaucrat A("eiki", 1);
+		Bureaucrat A("eiki", 2);
 		std::cout << A << std::endl;
 		std::cout << A.getName() << std::endl;
 		std::cout << A.getGrade() << std::endl;
