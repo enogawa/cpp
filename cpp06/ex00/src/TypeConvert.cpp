@@ -1,4 +1,7 @@
 #include "../inc/TypeConvert.hpp"
+#include <string>
+#include <iostream>
+#include <sstream>
 
 TypeConvert::TypeConvert()
 {
@@ -19,8 +22,16 @@ TypeConvert &TypeConvert::operator=(const TypeConvert &other)
 	return *this;
 }
 
-bool TypeConvert::SeudoLiterals(std::string argv)
+bool TypeConvert::SeudoLiterals(std::string arg)
 {
+	float f;
+	try {
+		f = std::stof(arg);
+	} catch (const std::invalid_argument &e) {
+	}
+	std::stringstream ss;
+	ss << f;
+	std::string argv = ss.str();
 	if (argv == "nan" || argv == "nanf")
 	{
 		std::cout << "char: impossible" << std::endl;

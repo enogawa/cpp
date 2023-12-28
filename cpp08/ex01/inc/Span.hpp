@@ -8,7 +8,7 @@ class Span
 	public:
 		Span(unsigned int N) : N(N)
 		{
-			std::cout << "Defoult constructor called" << std::endl;
+			std::cout << "Default constructor called" << std::endl;
 		}
 		~Span()
 		{
@@ -22,12 +22,20 @@ class Span
 		}
 		unsigned int	shortestSpan()
 		{
-			
-		}
-		unsigned int	longestSpan()
-		{
+			unsigned int	span = LLONG_MAX;
+			std::vector<int> P = this->V;
+			if (this->V.size() < 2)
+				throw std::out_of_range("vecotor size is too small !");
 
+			std::sort(P.begin(), P.end());
+			for (size_t i = 0; i < P.size() - 1; i++)
+				span = std::min(span, static_cast<unsigned int>(std::abs(P[i + 1] - P[i])));
+			return (span);
 		}
+		// unsigned int	longestSpan()
+		// {
+
+		// }
 	private:
 		std::vector<int>		V;
 		unsigned int			N;
