@@ -60,7 +60,7 @@ bool	TypeConvert::checkChar(std::string argv)
 
 bool TypeConvert::checkInt(std::string argv)
 {
-	if (argv[0] == '-')
+	if (argv[0] == '-' || argv[0] == '+')
 	{
 		argv.erase(0, 1);
 	}
@@ -76,7 +76,7 @@ bool TypeConvert::checkFloat(std::string argv)
 {
 	int i = 0;
 
-	if (argv[i] == '-')
+	if (argv[i] == '-' || argv[0] == '+')
 	{
 		i++;
 	}
@@ -101,7 +101,7 @@ bool TypeConvert::checkDouble(std::string argv)
 {
 	int i = 0;
 
-	if (argv[i] == '-')
+	if (argv[i] == '-' || argv[0] == '+')
 	{
 		i++;
 	}

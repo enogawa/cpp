@@ -8,6 +8,9 @@
 
 class TypeConvert
 {
+public:
+	static void	converter(std::string argv);
+	
 private:
 	static bool	SeudoLiterals(std::string argv);
 	static bool	checkChar(std::string argv);
@@ -20,14 +23,11 @@ private:
 	static void	convertFloat(float argv);
 	static void	convertDouble(double argv);
 
-public:
 	TypeConvert();
 	TypeConvert(const TypeConvert &);
 	~TypeConvert();
 
 	TypeConvert	&operator=(const TypeConvert &);
-	static void	converter(std::string argv);
-	
 };
 
 
