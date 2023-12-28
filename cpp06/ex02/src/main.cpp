@@ -8,7 +8,6 @@
 
 Base *generate(void){
 	srand(time(NULL));
-
 	int d = rand() % 3;
 	if (d  == 0)
 	{

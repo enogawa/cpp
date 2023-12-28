@@ -9,29 +9,24 @@
 class TypeConvert
 {
 private:
-	std::string	literal_;
-	char		minus_;
-	std::string	Fval_;
-	std::string	Dval_;
+	static bool	SeudoLiterals(std::string argv);
+	static bool	checkChar(std::string argv);
+	static bool	checkInt(std::string argv);
+	static bool	checkFloat(std::string argv);
+	static bool	checkDouble(std::string argv);
 
-	bool	SeudoLiterals(void);
-	bool	checkChar(void);
-	bool	checkInt(void);
-	bool	checkFloat(void);
-	bool	checkDouble(void);
+	static void	convertChar(std::string argv);
+	static void	convertInt(double argv);
+	static void	convertFloat(float argv);
+	static void	convertDouble(double argv);
 
-	void	convertChar(void);
-	void	convertInt(void);
-	void	convertFloat(void);
-	void	convertDouble(void);
 public:
 	TypeConvert();
-	TypeConvert(std::string literal);
 	TypeConvert(const TypeConvert &);
 	~TypeConvert();
 
 	TypeConvert	&operator=(const TypeConvert &);
-	void	converter();
+	static void	converter(std::string argv);
 	
 };
 

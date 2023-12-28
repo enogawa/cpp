@@ -23,8 +23,8 @@ int main(void)
 	Data *ret;
 	uintptr_t i;
 
-	data.x_ = 4;
-	data.y_ = 2;
+	data.x_ = 6;
+	data.y_ = 3;
 	i = serialize(&data);
 	std::cout << i << std::endl;
 	ret = deserialize(i);
