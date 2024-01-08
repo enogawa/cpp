@@ -21,7 +21,7 @@ int	main()
 			for (size_t i = 0; i < c.size(); i++)
 				std::cout << c[i];
 			std::cout << std::endl << "-----------------------" << std::endl;
-			// std::cout << a[10] << std::endl;
+			std::cout << a[10] << std::endl;
 		}
 	}
 	catch (std::exception &e)

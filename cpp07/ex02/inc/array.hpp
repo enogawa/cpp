@@ -50,10 +50,7 @@ public:
 			if (this->_n != cp._n)
 				throw(outOfRange());
 			for (size_t i = 0; i < cp._n; i++)
-			{
-				std::cout << "debug" << std::endl;
 				this->_arr[i] = cp._arr[i];
-			}
 		}
 		return (*this);
 	}
