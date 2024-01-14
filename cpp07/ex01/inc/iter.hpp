@@ -3,7 +3,7 @@
 #include <iostream>
 
 template	<typename t, typename v>
-void	iter(t *array, size_t len, void (*func)(const v &num))
+void	iter(t *array, size_t len, void (*func)(const v num))
 {
 	if (!array || !len || !func)
 		return ;

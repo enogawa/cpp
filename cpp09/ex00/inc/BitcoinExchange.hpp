@@ -7,13 +7,9 @@ class database
 {
 	public:
 		database(std::string file_name);
-		float	search(std::string data);
-
+		double	search(std::string data);
 	private:
-		std::map<std::string, float> mp;
-	
-
-
+		std::map<std::string, double> mp;
 };
 
 
