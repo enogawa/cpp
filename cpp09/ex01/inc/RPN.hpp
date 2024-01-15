@@ -7,7 +7,7 @@
 class RPN
 {
 private:
-	std::stack<int>	stk;
+	std::stack<double>	stk;
 public:
 	void	parse(std::string const &str);
 	void	cal(char c);

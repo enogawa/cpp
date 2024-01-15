@@ -13,11 +13,19 @@ int main(int argc, char *argv[])
 	std::vector<int>	vec(argc - 1);
 	for(size_t i = 0; i < vec.size(); i++)
 	{
-		for (int j = 0; argv[i][j] != '\0'; j++)
+		std::string arg = argv[i];
+		arg.erase(0, arg.find_first_not_of(" \t\n\r\f\v"));
+		arg.erase(arg.find_last_not_of(" \t\n\r\f\v") + 1);
+		if(arg[0] == '\0')
 		{
-			if (!std::isdigit(argv[i][j]))
+			std::cout << "Invalid input format!" << std::endl;
+				return (1);
+		}
+		for (int j = 0; arg[j] != '\0'; j++)
+		{
+			if (!std::isdigit(arg[j]))
 			{
-				std::cout << "input must be positive integer!" << std::endl;
+				std::cout << "Invalid input format!" << std::endl;
 				return (1);
 			}
 		}
@@ -39,6 +47,11 @@ int main(int argc, char *argv[])
 			std::cout << "Do not input over INT_MAX!" << std::endl;
 			return (1);
 		}
+		if (tmp <= 0)
+		{
+			std::cout << "input must be positive integer!" << std::endl;
+			return (1);
+		}
 		std::vector<int>::iterator ite = std::find(vec.begin(), vec.end(), tmp);
 		if (ite != vec.end())
 		{
@@ -46,11 +59,6 @@ int main(int argc, char *argv[])
 			return (1);
 		}
 		vec[i] = tmp;
-		if (vec[i] <= 0)
-		{
-			std::cout << "input must be positive integer!" << std::endl;
-			return (1);
-		}
 	}
 	std::cout << "-------vector sort-------" << std::endl;
 	std::cout << "before: ";

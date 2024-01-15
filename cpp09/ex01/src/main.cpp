@@ -4,9 +4,9 @@ void	RPN::cal(char c)
 {
 	if (this->stk.size() < 2)
 		throw	std::invalid_argument("ERROR: invalid RPN format");
-	int n2 = this->stk.top();
+	double n2 = this->stk.top();
 	this->stk.pop();
-	int n1 = this->stk.top();
+	double n1 = this->stk.top();
 	this->stk.pop();
 	if (c == '*')
 		stk.push(n1 * n2);
@@ -44,7 +44,12 @@ void	RPN::parse(std::string const &str)
 		}
 	}
 	if (stk.size() == 1)
-		std::cout << stk.top() << std::endl;
+	{
+		if (INT_MIN <= stk.top() && stk.top() <= INT_MAX)
+			std::cout << static_cast<int>(stk.top()) << std::endl;
+		else
+			throw	std::invalid_argument("ERROR: The result must be between INT_MIN and INT_MAX, inclusive.");
+	}
 	else
 		throw	std::invalid_argument("ERROR: stk.size() should be one");
 }

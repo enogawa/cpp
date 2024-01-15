@@ -87,9 +87,9 @@ int main(int argc, char **argv)
 	database db("data.csv");
 	std::string	line;
 	std::getline(ifs_input, line);
-	if (line.find("date | value") == std::string::npos)
+	if (line != "date | value")
 	{
-		std::cerr << "Error: input.txt must start with [date | value] !" << std::endl;
+		std::cerr << "Error: first line must be [date | value] !" << std::endl;
 		return 1;
 	}
 	size_t i = 0;
@@ -97,25 +97,40 @@ int main(int argc, char **argv)
 	{
 		try
 		{
-			std::cout << "----------"<< std::endl;
-			size_t	n = line.find(" | ");
-			if (n == std::string::npos)
-				throw	std::invalid_argument("ERROR: invalid format!");
-			std::string	date = line.substr(0, n);
-			if (!checkDateFormat(date))
-				throw	std::invalid_argument("ERROR: invalid date format!");
-			std::istringstream iss(line.substr(n+3));
-			double value;
-			iss >> value;
-			if (iss.fail())
-				throw	std::invalid_argument("ERROR: invalid value format!");
-			if (value < 0)
-				throw	std::invalid_argument("ERROR: not a positive nummber!");
-			else if(value > 1000)
-				throw	std::invalid_argument("ERROR: too large number!");
-			double	db_rate = db.search(date);
-			double	btc_value = db_rate * value;
-			std::cout << date << " => " << value << " = " << btc_value << std::endl;
+			if (line[0] != '\0')
+			{
+				size_t	n = line.find(" | ");
+				if (n == std::string::npos)
+					throw	std::invalid_argument("ERROR: invalid format!");
+				std::string	date = line.substr(0, n);
+				if (!checkDateFormat(date))
+					throw	std::invalid_argument("ERROR: invalid date format!");
+				std::string tmp = line.substr(n+3);
+				size_t count = 0;
+				for (size_t i = 0; i < tmp.size(); i++)
+				{
+					if (tmp[i] == '.')
+					{
+						if (i == 0)
+							throw	std::invalid_argument("ERROR: invalid value format!");
+						count++;
+					}
+					if (count > 1 || (tmp[i] != '.' && !std::isdigit(tmp[i])) || (tmp[0] == '0' && tmp[1] == '0') || std::isspace(tmp[i]))
+						throw	std::invalid_argument("ERROR: invalid value format!");
+				}
+				std::istringstream iss(line.substr(n+3));
+				double value;
+				iss >> value;
+				if (iss.fail())
+					throw	std::invalid_argument("ERROR: invalid value format!");
+				if (value <= 0)
+					throw	std::invalid_argument("ERROR: not a positive nummber!");
+				else if(value > 1000)
+					throw	std::invalid_argument("ERROR: too large number!");
+				double	db_rate = db.search(date);
+				double	btc_value = db_rate * value;
+				std::cout << date << " => " << value << " = " << btc_value << std::endl;
+			}
 		}
 		catch(const std::exception& e)
 		{
