@@ -2,6 +2,8 @@
 #define BITCOINEXCHANGE_HPP
 #include <iostream>
 #include <map>
+#include <sstream>
+#include <string>
 
 class database
 {

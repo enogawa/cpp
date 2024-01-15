@@ -34,9 +34,39 @@ bool	checkDateFormat(std::string const date)
 {
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
 		return (false);
-	int	year = std::stoi(date.substr(0, 4));	
-	int	month = std::stoi(date.substr(5, 2));
-	int	day = std::stoi(date.substr(8, 2));
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::string tmp = date.substr(0, 4);
+		if (!std::isdigit(tmp[i]))
+			return (false);
+	}
+	std::istringstream iss_year(date.substr(0, 4));
+	int year;
+	iss_year >> year;
+	if (iss_year.fail())
+		throw	std::invalid_argument("ERROR: invalid value format!");
+	for (size_t i = 0; i < 2; i++)
+	{
+		std::string tmp = date.substr(5, 2);
+		if (!std::isdigit(tmp[i]))
+			return (false);
+	}
+	std::istringstream iss_month(date.substr(5, 2));
+	int month;
+	iss_month >> month;
+	if (iss_month.fail())
+		throw	std::invalid_argument("ERROR: invalid value format!");
+	for (size_t i = 0; i < 2; i++)
+	{
+		std::string tmp = date.substr(8, 2);
+		if (!std::isdigit(tmp[i]))
+			return (false);
+	}
+	std::istringstream iss_day(date.substr(8, 2));
+	int day;
+	iss_day >> day;
+	if (iss_day.fail())
+		throw	std::invalid_argument("ERROR: invalid value format!");
 	return (checkValidDay(year, month, day));
 }
 
@@ -57,20 +87,31 @@ int main(int argc, char **argv)
 	database db("data.csv");
 	std::string	line;
 	std::getline(ifs_input, line);
+	if (line.find("date | value") == std::string::npos)
+	{
+		std::cerr << "Error: input.txt must start with [date | value] !" << std::endl;
+		return 1;
+	}
+	size_t i = 0;
 	while(std::getline(ifs_input, line))
 	{
 		try
 		{
+			std::cout << "----------"<< std::endl;
 			size_t	n = line.find(" | ");
 			if (n == std::string::npos)
 				throw	std::invalid_argument("ERROR: invalid format!");
 			std::string	date = line.substr(0, n);
 			if (!checkDateFormat(date))
 				throw	std::invalid_argument("ERROR: invalid date format!");
-			double	value = std::stod(line.substr(n+3));//stod使ったらアカン！？
+			std::istringstream iss(line.substr(n+3));
+			double value;
+			iss >> value;
+			if (iss.fail())
+				throw	std::invalid_argument("ERROR: invalid value format!");
 			if (value < 0)
 				throw	std::invalid_argument("ERROR: not a positive nummber!");
-			else if(value >= 1000)
+			else if(value > 1000)
 				throw	std::invalid_argument("ERROR: too large number!");
 			double	db_rate = db.search(date);
 			double	btc_value = db_rate * value;
@@ -80,6 +121,12 @@ int main(int argc, char **argv)
 		{
 			std::cerr << e.what() << '\n';
 		}
+		i++;
+	}
+	if (i == 0)
+	{
+		std::cout << "No data in the input.txt!" << std::endl;
+		return (1);
 	}
 }
 
@@ -92,7 +139,11 @@ database::database(std::string file_name)
 	{
 		int n_data = line_data.find(",");
 		std::string	date = line_data.substr(0, n_data);
-		double	rate = std::stod(line_data.substr(n_data+1));
+		std::istringstream iss_data(line_data.substr(n_data+1));
+		double rate;
+		iss_data >> rate;
+		if (iss_data.fail())
+			throw	std::invalid_argument("ERROR: invalid rate format!");
 		mp.insert(std::make_pair(date, rate));
 	}
 }
